@@ -1,4 +1,5 @@
 from django.db import models
+from users.models import User
 
 # Create your models here.
 
@@ -28,15 +29,15 @@ class Restraunt(models.Model):
     sun_break_time = models.CharField("일요일 휴식시간", max_length=20)
     sun_finish_time = models.TimeField("일요일 마감시간", auto_now=False)
     phone_no = models.CharField("연락처", max_length=15)
-    parking = models.BooleanField("주차시설", initial=False)
+    parking = models.BooleanField("주차시설", default=False)
     rating = models.FloatField("평점")
-    rating_count = models.IntegorField("평점 수")
+    rating_count = models.IntegerField("평점 수")
     image = models.ImageField("대표 이미지", upload_to=None)
 
 class RestrauntMenu(models.Model):
     restraunt_pk = models.ForeignKey(Restraunt, verbose_name="음식점 id", on_delete=models.CASCADE)
     name = models.CharField("이름", max_length=30)
-    price = models.IntegorField("가격")
+    price = models.IntegerField("가격")
 
 class RestrauntReview(models.Model):
     restraunt_pk = models.ForeignKey(Restraunt, verbose_name="음식점 id", on_delete=models.CASCADE)
