@@ -1,0 +1,83 @@
+<iframe id="iframe_map" name="iframe_map" title="지역선택" src="http://info.nec.go.kr/common/map/map_seoul.jsp?electionId=0020240410&parentCityCode=1100" frameborder="0" scrolling="no" width="650" height="670"></iframe>
+
+<!-- <html lang="ko"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>중앙선거관리위원회 선거통계시스템()</title>
+    <script type="text/javascript" src="/common/js/jquery/jquery-1.12.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/common/css/base_v2.css?ver=231025">
+    <link rel="stylesheet" type="text/css" href="/common/css/main_v2.css?ver=231124">
+    <link rel="stylesheet" type="text/css" href="/common/css/map_v2.css?ver=240118">
+    <script type="text/javascript" src="/common/js/main.js?ver=231212"></script><script type="text/javascript" src="/common/js/common.js?ver=231124"></script>
+    <script type="text/javascript">
+    //<[CDATA[
+        
+        function fn_setGusigunCode( result, pstrElectionId ) {
+            
+            var p_code = "";
+            var p_class = "";
+            
+            for(var i=0; i< result.gusigunCodeMap.length; i++) {
+                p_code = result.gusigunCodeMap[i].CODE.substr(2,4);
+                
+                p_class = $(".seoul_" + p_code).attr('class').substr(0, $(".seoul_" + p_code).attr('class').indexOf(' ')).trim();
+                
+                $( ".seoul_" + p_code ).html( '<a href="javascript:void(0)" id="' + p_class + '" onclick="fn_getEmdCode(' + "'" + pstrElectionId  + "', " + result.gusigunCodeMap[i].CODE + ');"><span>' + result.gusigunCodeMap[i].NAME + '</span></a>'  );
+            }
+            
+            
+            $( '#sidoName' ).text( result.gusigunCodeMap[0].SIDONAME );
+        }
+    //]]>
+    </script>
+    </head>
+    
+    <body class="mbg" onload="fn_getGusigunCode('0020240410', '1100')">
+    
+    <div class="citysmap">
+        <h3><span><em class="ls5">구ㆍ시ㆍ군</em> &nbsp;선택</span></h3>
+        <div class="cityarea">
+            <div class="c_seoul">
+                <span class="btn_map"><a href="/common/map/main_map.jsp?electionId=0020240410" title="전국지도 바로가기"><img src="/common/images/main/btn_map.png" alt="" border="0"></a></span>
+                <h4 id="sidoName">서울특별시</h4>
+                <ul id="gusigunList">
+                  <li class="jongno seoul_01"><a href="javascript:void(0)" id="jongno" onclick="fn_getEmdCode('0020240410', 1101);"><span style="color:#2a5790">종로구</span></a></li>
+                  <li class="junggu seoul_02"><a href="javascript:void(0)" id="junggu" onclick="fn_getEmdCode('0020240410', 1102);"><span style="color:#2a5790">중구</span></a></li>
+                  <li class="yongsan seoul_03"><a href="javascript:void(0)" id="yongsan" onclick="fn_getEmdCode('0020240410', 1103);"><span style="color:#2a5790">용산구</span></a></li>
+                  <li class="seongdong seoul_04"><a href="javascript:void(0)" id="seongdong" onclick="fn_getEmdCode('0020240410', 1104);"><span style="color:#2a5790">성동구</span></a></li>
+                  <li class="kwangjin seoul_05"><a href="javascript:void(0)" id="kwangjin" onclick="fn_getEmdCode('0020240410', 1105);"><span style="color:#2a5790">광진구</span></a></li>
+                  <li class="dongdaemun seoul_06"><a href="javascript:void(0)" id="dongdaemun" onclick="fn_getEmdCode('0020240410', 1106);"><span style="color:#2a5790">동대문구</span></a></li>
+                  <li class="jungnang seoul_07"><a href="javascript:void(0)" id="jungnang" onclick="fn_getEmdCode('0020240410', 1107);"><span style="color:#2a5790">중랑구</span></a></li>
+                  <li class="seongbuk seoul_08"><a href="javascript:void(0)" id="seongbuk" onclick="fn_getEmdCode('0020240410', 1108);"><span style="color:#2a5790">성북구</span></a></li>
+                  <li class="kangbuk seoul_09"><a href="javascript:void(0)" id="kangbuk" onclick="fn_getEmdCode('0020240410', 1109);"><span style="color:#2a5790">강북구</span></a></li>
+                  <li class="dobong seoul_10"><a href="javascript:void(0)" id="dobong" onclick="fn_getEmdCode('0020240410', 1110);"><span style="color:#2a5790">도봉구</span></a></li>
+                  <li class="nowon seoul_11"><a href="javascript:void(0)" id="nowon" onclick="fn_getEmdCode('0020240410', 1111);"><span style="color:#2a5790">노원구</span></a></li>
+                  <li class="eunpyung seoul_12"><a href="javascript:void(0)" id="eunpyung" onclick="fn_getEmdCode('0020240410', 1112);"><span style="color:#2a5790">은평구</span></a></li>
+                  <li class="seodaemun seoul_13"><a href="javascript:void(0)" id="seodaemun" onclick="fn_getEmdCode('0020240410', 1113);"><span style="color:#2a5790">서대문구</span></a></li>
+                  <li class="mapo seoul_14"><a href="javascript:void(0)" id="mapo" onclick="fn_getEmdCode('0020240410', 1114);"><span style="color:#2a5790">마포구</span></a></li>
+                  <li class="yangcheon seoul_15"><a href="javascript:void(0)" id="yangcheon" onclick="fn_getEmdCode('0020240410', 1115);"><span style="color:#2a5790">양천구</span></a></li>
+                  <li class="kangseo seoul_16"><a href="javascript:void(0)" id="kangseo" onclick="fn_getEmdCode('0020240410', 1116);"><span style="color:#2a5790">강서구</span></a></li>
+                  <li class="guro seoul_17"><a href="javascript:void(0)" id="guro" onclick="fn_getEmdCode('0020240410', 1117);"><span style="color:#2a5790">구로구</span></a></li>
+                  <li class="gumcheon seoul_18"><a href="javascript:void(0)" id="gumcheon" onclick="fn_getEmdCode('0020240410', 1118);"><span style="color:#2a5790">금천구</span></a></li>
+                  <li class="yeongdungpo seoul_19"><a href="javascript:void(0)" id="yeongdungpo" onclick="fn_getEmdCode('0020240410', 1119);"><span style="color:#2a5790">영등포구</span></a></li>
+                  <li class="dongjak seoul_20"><a href="javascript:void(0)" id="dongjak" onclick="fn_getEmdCode('0020240410', 1120);"><span style="color:#2a5790">동작구</span></a></li>
+                  <li class="gwanak seoul_21"><a href="javascript:void(0)" id="gwanak" onclick="fn_getEmdCode('0020240410', 1121);"><span style="color:#2a5790">관악구</span></a></li>
+                  <li class="seocho seoul_22"><a href="javascript:void(0)" id="seocho" onclick="fn_getEmdCode('0020240410', 1122);"><span style="color:#2a5790">서초구</span></a></li>
+                  <li class="kangnam seoul_23"><a href="javascript:void(0)" id="kangnam" onclick="fn_getEmdCode('0020240410', 1123);"><span style="color:#2a5790">강남구</span></a></li>
+                  <li class="songpa seoul_24"><a href="javascript:void(0)" id="songpa" onclick="fn_getEmdCode('0020240410', 1124);"><span style="color:#2a5790">송파구</span></a></li>
+                  <li class="kangdong seoul_25"><a href="javascript:void(0)" id="kangdong" onclick="fn_getEmdCode('0020240410', 1125);"><span style="color:#2a5790">강동구</span></a></li>
+                </ul>
+            </div>
+            
+        </div>
+        
+        <h3><span><em class="ls5">읍ㆍ면ㆍ동</em> &nbsp;선택</span></h3>
+        <div class="citylist">
+        </div>
+        
+    
+    </div>
+    
+    
+    
+    </body></html> -->

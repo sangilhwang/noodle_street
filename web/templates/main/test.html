@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <style>
+    .table-container {
+      display: table;
+      border-collapse: collapse;
+    }
+    .table-row {
+      display: table-row;
+    }
+    .table-cell {
+      display: table-cell;
+      width: 100px;
+      height: 100px;
+      border: 1px solid #ccc;
+      text-align: center;
+      vertical-align: middle;
+      cursor: pointer;
+    }
+    .table-cell:hover {
+      background-color: lightgray;
+    }
+  </style>
+</head>
+<body>
+
+<div class="table-container">
+  <div class="table-row">
+    <div class="table-cell" onclick="cellClicked(0, 0)">강북구</div>
+    <div class="table-cell" onclick="cellClicked(0, 1)">강서구</div>
+    <div class="table-cell" onclick="cellClicked(0, 2)">강남구</div>
+  </div>
+  <div class="table-row">
+    <div class="table-cell" onclick="cellClicked(1, 0)">영등포구</div>
+    <div class="table-cell" onclick="cellClicked(1, 1)">서대문구</div>
+    <div class="table-cell" onclick="cellClicked(1, 2)">동대문구</div>
+  </div>
+  <div class="table-row">
+    <div class="table-cell" onclick="cellClicked(2, 0)">양천구</div>
+    <div class="table-cell" onclick="cellClicked(2, 1)">중랑구</div>
+    <div class="table-cell" onclick="cellClicked(2, 2)">구로구</div>
+  </div>
+</div>
+
+<script>
+  function cellClicked(row, col) {
+    alert('Cell clicked: ' + (row + 1) + 'x' + (col + 1));
+  }
+</script>
+
+</body>
+</html>
