@@ -9,7 +9,7 @@ from django.urls import reverse
 
 def login_view(request):
     if request.user.is_authenticated:
-        return redirect(request, "main_test.html")
+        return render(request, "main_test.html")
 
     if request.method == "POST":
         form = LoginForm(data=request.POST)
@@ -23,7 +23,7 @@ def login_view(request):
             if user:
                 login(request, user)
 
-                return redirect(request, "main_test.html")
+                return render(request, "main_test.html")
 
             else:
                 form.add_error(None, "입력한 자격증명에 해당하는 사용자가 없습니다.")
