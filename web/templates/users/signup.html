@@ -3,6 +3,7 @@
     <body>
         <div id="signup">
             <form method="POST", enctype="multipart/form-data">
+                <button type="submit"><a href="/main/">메인페이지</button></a>
                 <h1>면리단길 - 회원가입</h1>
                 {% csrf_token %}
                 {{ form.as_p }}
