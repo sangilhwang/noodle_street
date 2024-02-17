@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block base_content %}
+        <!-- 식당 상세페이지 내용 출력 -->
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-2"></div>
+        <div class="col-md-6">
+        <div class="container">
+            <div class="box">
+                <div class="restaurant-info">
+                    <!-- 대표이미지 출력하기. 없으면 이미지없음 사진 반환-->
+                    {% if restaurant.image %}
+                        <img src="{{ restaurant.image }}" class="img-fluid" alt="이미지준비중" width="400" height="500">
+                    {% else %}
+                        <img src="{% static 'images/image_preparing.jpg' %}" class="img-fluid" alt="이미지준비중" width="400" height="400">
+                    {% endif %}
+                </div>
+                <!-- 식당 상호명, 주소 보여주기 -->
+                <h5 class="card-title mt-3">상호명: {{ restaurant.name }}</h5>
+                <p class="card-text">주소: {{ restaurant.address }}</p>
+                <!-- 전화번호, 평점, 평가한사람수 보여주기. 없으면 보여주지않음 -->
+                    {% if restaurant.phone_no %}
+                        <p class="card-text">전화번호: {{ restaurant.phone_no }}</p>
+                    {% endif %}
+                    {% if restaurant.rating %}
+                        <p class="card-text">평점: {{ restaurant.rating }} ({{ restaurant.rating_count }}명이 평가)</p>
+                    {% endif %}
+                    <!-- 영업시간 -->
+                    <!-- {% if restaurant.mon_start != "확인 필요"%}             -->
+                        <p>영업시간: 월요일 {{ restaurant.mon_start }}~{{ restaurant.mon_end}}<br>
+                        화요일 {{ restaurant.tue_start }}~{{ restaurant.tue_end}}<br>
+                        수요일 {{ restaurant.wed_start }}~{{ restaurant.wed_end}}<br>
+                        목요일 {{ restaurant.thu_start }}~{{ restaurant.thu_end}}<br>
+                        금요일 {{ restaurant.fri_start }}~{{ restaurant.fri_end}}<br>
+                        토요일 {{ restaurant.sat_start }}~{{ restaurant.sat_end}}<br>
+                        일요일 {{ restaurant.sun_start }}~{{ restaurant.sun_end}}<br>
+                        </p>
+                    {% endif %}
+                    <!-- 만약 브레이크타임이 있다면 보여주기 -->
+                        <p>브레이크타임:</p>
+                    {% if restaurant.mon_break_start%}
+                        <p>월요일 {{ restaurant.mon_break_start }}~{{ restaurant.mon_break_end }}</p>
+                    {% endif %}
+                    {% if restaurant.tue_break_start %}
+                        <p>화요일 {{ restaurant.tue_break_start }}~{{ restaurant.tue_break_end }}</p>
+                    {% endif %}
+                    {% if restaurant.wed_break_start %}
+                        <p>수요일 {{ restaurant.wed_break_start }}~{{ restaurant.wed_break_end }}</p>
+                    {% endif %}
+                    {% if restaurant.thu_break_start %}
+                        <p>목요일 {{ restaurant.thu_break_start }}~{{ restaurant.thu_break_end }}</p>
+                    {% endif %}
+                    {% if restaurant.fri_break_start %}
+                        <p>금요일 {{ restaurant.fri_break_start }}~{{ restaurant.fri_break_end }}</p>
+                    {% endif %}
+                    {% if restaurant.sat_break_start %}
+                        <p>토요일 {{ restaurant.sat_break_start }}~{{ restaurant.sat_break_end }}</p>
+                    {% endif %}
+                    {% if restaurant.sun_break_start %}
+                        <p>일요일 {{ restaurant.sun_break_start }}~{{ restaurant.sun_break_end }}</p>
+                    {% endif %}
+
+                    <!-- 만약 라스트오더가 있다면 보여주기 -->
+                    <p>라스트오더:</p>
+                    {% if restaurant.mon_last_order%}
+                        <p>월요일 {{ restaurant.mon_last_order }}</p>
+                    {% endif %}
+                    {% if restaurant.tue_last_order %}
+                        <p>화요일 {{ restaurant.tue_last_order }}</p>
+                    {% endif %}
+                    {% if restaurant.wed_last_order %}
+                        <p>수요일 {{ restaurant.wed_last_order }}</p>
+                    {% endif %}
+                    {% if restaurant.thu_last_order %}
+                        <p>목요일 {{ restaurant.thu_last_order }}</p>
+                    {% endif %}
+                    {% if restaurant.fri_last_order %}
+                        <p>금요일 {{ restaurant.fri_last_order }}</p>
+                    {% endif %}
+                    {% if restaurant.sat_last_order %}
+                        <p>토요일 {{ restaurant.sat_last_order }}</p>
+                    {% endif %}
+                    {% if restaurant.sun_last_order %}
+                        <p>일요일 {{ restaurant.sun_last_order }}</p>
+                    {% endif %}       
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

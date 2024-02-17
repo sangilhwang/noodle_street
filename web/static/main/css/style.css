@@ -3,6 +3,10 @@ body {
   overflow-x: hidden;
 }
 
+.rounded-image {
+  border-radius: 20px 20px 0 0; /* 위쪽 둥근 부분만 남기고 나머지 모서리는 직각으로 설정합니다. */
+}
+
 p {
   font-family: "Poppins", sans-serif;
 }
