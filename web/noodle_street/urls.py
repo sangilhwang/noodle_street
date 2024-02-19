@@ -23,4 +23,5 @@ urlpatterns = [
     path("users/", include("users.urls")),
     path("", views.main, name="main"),
     path("main/", include("main.urls")),
+    path("single_pages/", include("single_pages.urls")),
 ]

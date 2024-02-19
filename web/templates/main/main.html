@@ -1,107 +1,6 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="ko">
-
-  <head>
-    <title>Noodle Street</title>
-<<<<<<< HEAD
-
-=======
->>>>>>> jayden
-    <!--owl slider stylesheet -->
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
-
-    <!-- bootstrap core css -->
-    <link rel="stylesheet" type="text/css" href="{% static 'main/css/bootstrap.css' %}" />
-    <!-- fonts awesome style -->
-    <link href="{% static 'main/css/font-awesome.min.css' %}" rel="stylesheet" />
-    <script src="https://kit.fontawesome.com/15e0db63b5.js" crossorigin="anonymous"></script>
-    <!-- fonts style -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Poppins:400,500,700&display=swap" rel="stylesheet" />
-
-    <!-- Custom styles for this template -->
-    <link href="{% static 'main/css/style.css' %}" rel="stylesheet" />
-    <!-- responsive style -->
-    <link href="{% static 'main/css/responsive.css' %}" rel="stylesheet" />
-    <!-- 부트스트랩 적용 -->
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-  </head>
-
-<body>
-  <div class="hero_area">
-    <!-- header section strats -->
-    <header class="header_section">
-      <div class="contact_nav_container">
-        <div class="container">
-          <div class="contact_nav">
-          </div>
-        </div>
-      </div>
-      <div class="container-fluid">
-        <nav class="navbar navbar-expand-lg custom_nav-container">
-          <div class="custom_menu-btn">
-            <button onclick="openNav()">
-              <span class="s-1"> </span>
-              <span class="s-2"> </span>
-              <span class="s-3"> </span>
-            </button>
-          </div>
-          <div id="myNav" class="overlay">
-            <div class="menu_btn-style ">
-              <button onclick="closeNav()">
-                <span class="s-1"> </span>
-                <span class="s-2"> </span>
-                <span class="s-3"> </span>
-              </button>
-            </div>
-            <div class="overlay-content">
-              <div>
-                <!-- <a href=""><i class="fa-solid fa-filter"> 필터 및 정렬</i></a> -->
-                <a href="{% url 'users:login' %}">로그인</a>
-                <a href="{% url 'users:logout' %}">로그아웃</a>
-                <a href="{% url 'users:signup' %}">회원가입</a>
-              </div>
-                <!-- {% for list in lists %}
-                  {% if list.address_gu == title %}
-                    <a class="active">
-                      상호명: {{ list.name }}<br>
-                      주소: {{ list.address }}<br>
-                      자치구: {{ list.address_gu }}<br>
-                      전화번호: {{ list.phone_no }}<br>
-                      주차유무: {{ list.parking }}<br>
-                      별점: {{ list.rating }}<br>
-                      별점 참여자 수: {{ list.rating_count }}<br>
-                      이미지: <img src="{{ list.image }}" alt="">
-                    </a>
-                  {% endif %}
-                {% endfor %} -->
-              <!-- <a class="active" href="index.html"> sample1 <span class="sr-only">(current)</span></a>
-              <a class="" href="about.html"> sample2 </a> -->
-            </div>
-          </div>
-          <a class="navbar-brand" href="/main/">
-            <span>
-              면리단길
-            </span>
-          </a>
-          <span style="display: inline-block; width: 95%; text-align: right;">{{ user.username }}</span>
-          <!--<div class="user_option">
-            <a href="{% url 'users:login' %}">
-              <span>
-                Login
-              </span>
-              <i class="fa fa-user" aria-hidden="true"></i>
-            </a>
-              <form class="form-inline">
-              <button class="btn  nav_search-btn" type="submit">
-                <i class="fa fa-search" aria-hidden="true"></i>
-              </button>
-            </form>
-          </div>-->
-        </nav>
-      </div>
-    </header>
-    <!-- end header section -->
+{% block base_content %}
     <!-- slider section -->
     <section class="slider_section position-relative">
       <div id="customCarousel1" class="carousel slide" data-ride="carousel">
@@ -116,18 +15,17 @@
               <div class="baby_detail">
                 <div class="baby_text">
                   <h2>
-                    Example pic 1
+                    <img src="{% static 'images/라멘.jpg' %}" width="100" height="40" class="img-fluid"><small>일본식 라멘?</small>
                   </h2>
                 </div>
               </div>
               <div class="care_detail">
-                <a href="">
-                  Sign Up!
-                </a>
+                <!-- <a href="">
+                  Noodle Street
+                </a> -->
                 <div class="care_text">
                   <h2>
-                    Example pic 2
-                    <!-- <img src="{% static 'images/짜장면.jpg' %}" width="429" height="398" usemap="#MapSeoul" alt="" class="img-fluid"> -->
+                    <img src="{% static 'images/짜장면.jpg' %}" width="100" height="40" class="img-fluid"><small>오늘은 중식?</small>
                   </h2>
                 </div>
               </div>
@@ -138,17 +36,14 @@
               <div class="baby_detail">
                 <div class="baby_text">
                   <h2>
-                    Example Pic 3
+                    <img src="{% static 'images/우동.png' %}" width="100" height="75" ><small>뜨끈한 우동?</small>
                   </h2>
                 </div>
               </div>
               <div class="care_detail">
-                <a href="">
-                  Sign Up!
-                </a>
                 <div class="care_text">
                   <h2>
-                    Example Pic 4
+                    <img src="{% static 'images/냉면.jpg' %}" width="100" height="75" ><small>시원한 냉면?</small>
                   </h2>
                 </div>
               </div>
@@ -159,17 +54,14 @@
               <div class="baby_detail">
                 <div class="baby_text">
                   <h2>
-                    Example Pic 5
+                    <img src="{% static 'images/칼국수.jpeg' %}" width="120" height="40" class="img-fluid"><small>담백한 칼국수?</small>
                   </h2>
                 </div>
               </div>
               <div class="care_detail">
-                <a href="">
-                  Sign Up!
-                </a>
                 <div class="care_text">
                   <h2>
-                    Example Pic 6
+                    <img src="{% static 'images/잔치국수.jpg' %}" width="100" height="40" class="img-fluid"><small>국수 한 그릇?</small>
                   </h2>
                 </div>
               </div>
@@ -184,7 +76,7 @@
       <div class="row justify-content-center">
         <div class="col-md-2"></div>
         <div class="col-md-6">
-            <h3>희망하는 자치구를 클릭하세요</h3>
+            <h3>찾고싶은 자치구를 클릭하세요 <i class="fa-regular fa-face-smile" style="color: #FFD43B;"></i></h3>
             <img src="{% static 'images/그림테스트1.png' %}" width="429" height="398" usemap="#MapSeoul" alt="서울지도" class="img-fluid"> 
             <map name="MapSeoul" id="MapSeoul">
               <area shape="poly" coords="237,233,254,227,268,236,278,242,280,259,296,267,310,276,313,286,319,301,307,306,300,308,294,293,284,290,265,296,266,287,251,273,250,264" href="/main/gu/강남구/" class="Seoul01" alt="강남구" title="강남구">
@@ -222,10 +114,4 @@
         </footer>
       </div>
     </div>
-  <!-- footer section -->
-      <script src="{% static 'main/js/jquery-3.4.1.min.js' %}"></script>
-      <script src="{% static 'main/js/bootstrap.js' %}"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-      <script src="{% static 'main/js/custom.js' %}"></script>
-  </body>
-</html>
+{% endblock %}
