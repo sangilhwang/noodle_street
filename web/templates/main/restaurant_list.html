@@ -2,12 +2,63 @@
 {% load static %}
 
 {% block base_content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-2"></div>
+        <div class="col-md-5">
+        <h2><a href="{% url 'main:restaurant_list' gu=gu %}">{{ gu }} 리스트</h2></a>
+    </div>
+</div>
 <!-- 한 줄에 세칸씩 카드형식으로 식당리스트 보여주기 -->
 <div class="container">
+    <!-- 식당 검색기능 구현 -->
+    <div>
+        <small>식당 검색하기</small>
+        <form method="GET"> 
+            <input type = "text" name = "keyword"> 
+            <button type="submit">검색</button> 
+        </form>
+        <br>
+    </div>
+    {% if request.GET %}
+        {% for restaurant in restaurant_keyword %}
+        <div class="container"> 
+        <div class="row justify-content-center">
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <div>
+                            <a href="{% url 'single_pages:detail' restaurant_id=restaurant.id %}" style="text-decoration:none;">
+                            <!-- 대표이미지 출력하기. 없으면 이미지없음 사진 반환-->
+                            {% if restaurant.image %}
+                                <img src="{{ restaurant.image }}" class="img-fluid" alt="이미지준비중" width="400" height="500">
+                            {% else %}
+                                <img src="{% static 'images/image_preparing.jpg' %}" class="img-fluid" alt="이미지준비중" width="400" height="500">
+                            {% endif %}
+                            
+                            <!-- 식당 상호명, 주소 보여주기 -->
+                            <h5 class="card-title mt-3">상호명: {{ restaurant.name }}</h5>
+                            <p class="card-text">주소: {{ restaurant.address }}</p>
+                            <!-- 전화번호, 평점, 평가한사람수 보여주기. 없으면 보여주지않음 -->
+                            {% if restaurant.phone_no %}
+                                <p class="card-text">전화번호: {{ restaurant.phone_no }}</p>
+                            {% endif %}
+                            {% if restaurant.rating %}
+                                <p class="card-text">평점: {{ restaurant.rating }} ({{ restaurant.rating_count }}명이 평가)</p>
+                            {% endif %}
+                            </a>
+                        </div>    
+                    </div>                    
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+    <div class="container">    
     <div class="row justify-content-center">
         {% for restaurant in restaurants %}
             <div class="col-lg-4 mb-4">
-                <div class="card">
+                <div class="card h-100">
                     <div class="card-body text-center">
                         <div>
                             <a href="{% url 'single_pages:detail' restaurant_id=restaurant.id %}" style="text-decoration:none;">
@@ -33,7 +84,8 @@
                     </div>                    
                 </div>
             </div>
-    {% endfor %}
+        {% endfor %}
+    {% endif %}
     </div>
 </div>    
 {% endblock %}
