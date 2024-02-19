@@ -39,5 +39,14 @@ def review_add(request, restaurant_id):
     
     return redirect("users:login")
 
-# next로 값이 전달되었다면 해당 위치로, 전달되지 않았다면 레스토랑 위치로 이동
+@require_POST
+def review_delete(request, restaurant_id, review_id):
+    review = RestrauntReview.objects.get(id=review_id)
+
+    if review.user_pk == request.user:
+        review.delete()
+
+        url_next = reverse("single_pages:detail", kwargs={'restaurant_id' : restaurant_id})
+
+        return redirect(url_next)
     

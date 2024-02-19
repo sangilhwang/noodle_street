@@ -127,7 +127,13 @@
                             </form>
 
                             <h5>리뷰</h5>
-                            {% for review in reviews %}                              
+                            {% for review in reviews %}
+                                {% if user == review.user_pk %}
+                                    <form method="POST" action="{% url 'single_pages:review_delete' restaurant.id review.id %}">
+                                        {% csrf_token %}
+                                        <button type="submit">삭제</button>
+                                    </form>
+                                {% endif %}
                                 <p>{{ review.user_pk.username }}</p>
                                 <p>{{ review.comment }}</p>
                             {% endfor %}
