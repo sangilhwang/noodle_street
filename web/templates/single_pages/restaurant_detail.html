@@ -19,7 +19,27 @@
                 </div>
                 <!-- 식당 상호명, 주소 보여주기 -->
                 <h5 class="card-title mt-3">상호명: {{ restaurant.name }}</h5>
-                <p class="card-text">주소: {{ restaurant.address }}</p>
+                <!-- 좋아요 기능 구현 -->
+                <div class="row justify-content-end">
+                    <div class="col-6">
+                    <form action="{% url 'single_pages:restaurant_like' restaurant_id=restaurant.id %}?next={{ action_redirect_url }}"
+                        method="POST">
+                        {% csrf_token %}          
+                        <button type="submit" class="btn btn-outline-primary">
+                        {% if user in restaurant.like_users.all %}
+                            <i class="fa-solid fa-heart" style="color: #ff0000;"></i>
+                            좋아요({{ restaurant.like_users.count }})
+                        </button>
+                        {% else %}
+                            <i class="fa-regular fa-heart" style="color: #ff0000;"></i>
+                            좋아요({{ restaurant.like_users.count }})
+                        </button>
+                        {% endif %}
+                    </form>
+                    </div>
+                </div>
+                <div>
+                    <p class="card-text">주소: {{ restaurant.address }}</p>
                 <!-- 전화번호, 평점, 평가한사람수 보여주기. 없으면 보여주지않음 -->
                     {% if restaurant.phone_no %}
                         <p class="card-text">전화번호: {{ restaurant.phone_no }}</p>
@@ -27,94 +47,117 @@
                     {% if restaurant.rating %}
                         <p class="card-text">평점: {{ restaurant.rating }} ({{ restaurant.rating_count }}명이 평가)</p>
                     {% endif %}
-                    <!-- 영업시간 -->
+                    <!-- 영업시간이 있다면 보여주기, 휴무일이면 휴무일 출력 -->
                     {% if restaurant.mon_start %}
                         <p>영업시간: <br>
                     {% endif %}
                     {% if restaurant.mon_start != "휴무일"%}            
                     월요일: {{ restaurant.mon_start }}~{{ restaurant.mon_end}}<br>
                     {% else %}
-                    월요일: 휴무일
+                    월요일: 휴무일<br>
                     {% endif %}
                     {% if restaurant.tue_start != "휴무일" %}
                     화요일: {{ restaurant.tue_start }}~{{ restaurant.tue_end}}<br>
                     {% else %}
-                    화요일: 휴무일
+                    화요일: 휴무일<br>
                     {% endif %}
                     {% if restaurant.wed_start != "휴무일"%} 
                     수요일: {{ restaurant.wed_start }}~{{ restaurant.wed_end}}<br>
                     {% else %}
-                    수요일: 휴무일
+                    수요일: 휴무일<br>
                     {% endif %}
                     {% if restaurant.thu_start != "휴무일"%} 
                     목요일: {{ restaurant.thu_start }}~{{ restaurant.thu_end}}<br>
                     {% else %}
-                    목요일: 휴무일
+                    목요일: 휴무일<br>
                     {% endif %}
                     {% if restaurant.fri_start != "휴무일"%} 
                     금요일: {{ restaurant.fri_start }}~{{ restaurant.fri_end}}<br>
                     {% else %}
-                    금요일: 휴무일
+                    금요일: 휴무일<br>
                     {% endif %}
                     {% if restaurant.sat_start != "휴무일"%} 
                     토요일: {{ restaurant.sat_start }}~{{ restaurant.sat_end}}<br>
                     {% else %}
-                    토요일: 휴무일
+                    토요일: 휴무일<br>
                     {% endif %}
                     {% if restaurant.sun_start != "휴무일"%} 
                     일요일: {{ restaurant.sun_start }}~{{ restaurant.sun_end}}<br>
                     {% else %}
-                    일요일: 휴무일
+                    일요일: 휴무일<br>
                     {% endif %}
                     </p>
-                    
+                </div>
+                <div>
                     <!-- 만약 브레이크타임이 있다면 보여주기 -->
-                        <p>브레이크타임:</p>
-                    {% if restaurant.mon_break_start != ""%}
-                        <p>월요일 {{ restaurant.mon_break_start }}~{{ restaurant.mon_break_end }}</p>
+                    {% if restaurant.mon_break_start %}
+                            <p>브레이크타임:<br>
+                        {% if restaurant.mon_break_start != ""%}
+                            월요일: {{ restaurant.mon_break_start }}~{{ restaurant.mon_break_end }}<br>
+                        {% endif %}
+                        {% if restaurant.tue_break_start != "" %}
+                            화요일: {{ restaurant.tue_break_start }}~{{ restaurant.tue_break_end }}<br>
+                        {% endif %}
+                        {% if restaurant.wed_break_start != "" %}
+                            수요일: {{ restaurant.wed_break_start }}~{{ restaurant.wed_break_end }}<br>
+                        {% endif %}
+                        {% if restaurant.thu_break_start != "" %}
+                            목요일: {{ restaurant.thu_break_start }}~{{ restaurant.thu_break_end }}<br>
+                        {% endif %}
+                        {% if restaurant.fri_break_start != "" %}
+                            금요일: {{ restaurant.fri_break_start }}~{{ restaurant.fri_break_end }}<br>
+                        {% endif %}
+                        {% if restaurant.sat_break_start != "" %}
+                            토요일: {{ restaurant.sat_break_start }}~{{ restaurant.sat_break_end }}<br>
+                        {% else %}
+                            토요일: 브레이크 없음<br>
+                        {% endif %}
+                        {% if restaurant.sun_break_start != "" %}
+                            일요일 {{ restaurant.sun_break_start }}~{{ restaurant.sun_break_end }}
+                        {% else %}
+                            일요일: 브레이크 없음<br>
+                        {% endif %}
                     {% endif %}
-                    {% if restaurant.tue_break_start != "" %}
-                        <p>화요일 {{ restaurant.tue_break_start }}~{{ restaurant.tue_break_end }}</p>
-                    {% endif %}
-                    {% if restaurant.wed_break_start != "" %}
-                        <p>수요일 {{ restaurant.wed_break_start }}~{{ restaurant.wed_break_end }}</p>
-                    {% endif %}
-                    {% if restaurant.thu_break_start != "" %}
-                        <p>목요일 {{ restaurant.thu_break_start }}~{{ restaurant.thu_break_end }}</p>
-                    {% endif %}
-                    {% if restaurant.fri_break_start != "" %}
-                        <p>금요일 {{ restaurant.fri_break_start }}~{{ restaurant.fri_break_end }}</p>
-                    {% endif %}
-                    {% if restaurant.sat_break_start != "" %}
-                        <p>토요일 {{ restaurant.sat_break_start }}~{{ restaurant.sat_break_end }}</p>
-                    {% endif %}
-                    {% if restaurant.sun_break_start != "" %}
-                        <p>일요일 {{ restaurant.sun_break_start }}~{{ restaurant.sun_break_end }}</p>
-                    {% endif %}
-
+                    </p>
+                </div>
+                <div>
                     <!-- 만약 라스트오더가 있다면 보여주기 -->
-                    <p>라스트오더:</p>
-                    {% if restaurant.mon_last_order%}
-                        <p>월요일 {{ restaurant.mon_last_order }}</p>
+                    {% if restaurant.mon_last_order or restaurant.tue_last_order or restaurant.wed_last_order or restaurant.thu_last_order or restaurant.fri_last_order or restaurant.sat_last_order or restaurant.sun_last_order %}
+                        <p>라스트오더:<br>
+                    {% endif %}
+                    {% if restaurant.mon_last_order %}
+                        월요일 {{ restaurant.mon_last_order }}<br>
                     {% endif %}
                     {% if restaurant.tue_last_order %}
-                        <p>화요일 {{ restaurant.tue_last_order }}</p>
+                        화요일 {{ restaurant.tue_last_order }}<br>
                     {% endif %}
                     {% if restaurant.wed_last_order %}
-                        <p>수요일 {{ restaurant.wed_last_order }}</p>
+                        수요일 {{ restaurant.wed_last_order }}<br>
                     {% endif %}
                     {% if restaurant.thu_last_order %}
-                        <p>목요일 {{ restaurant.thu_last_order }}</p>
+                        목요일 {{ restaurant.thu_last_order }}<br>
                     {% endif %}
                     {% if restaurant.fri_last_order %}
-                        <p>금요일 {{ restaurant.fri_last_order }}</p>
+                        금요일 {{ restaurant.fri_last_order }}<br>
                     {% endif %}
                     {% if restaurant.sat_last_order %}
-                        <p>토요일 {{ restaurant.sat_last_order }}</p>
+                        토요일 {{ restaurant.sat_last_order }}<br>
                     {% endif %}
                     {% if restaurant.sun_last_order %}
-                        <p>일요일 {{ restaurant.sun_last_order }}</p>
-                    {% endif %}       
+                        일요일 {{ restaurant.sun_last_order }}<br>
+                    {% endif %}
+                    </p>       
+                </div>
+                <hr>
+                <div>
+                    {% if restaurant_menu %}
+                    <h4>메뉴</h4>
+                        {% for menu in restaurant_menu %}
+                            {% if menu.name %}
+                                {{ menu.name }} {{ menu.price }} <br>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -122,5 +165,6 @@
         </div>
     </div>
 </div>
+
 
 {% endblock %}

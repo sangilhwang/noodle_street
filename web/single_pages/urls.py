@@ -7,4 +7,5 @@ app_name = "single_pages"
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("restaurants_detail/<int:restaurant_id>/", views.detail, name="detail"),
+    path("<int:restaurant_id>/like/", views.restaurant_like, name="restaurant_like"),
 ]

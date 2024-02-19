@@ -1,7 +1,89 @@
+#login, #signup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-color: #fafafa;
+}
+#login > form, #signup > form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #ddd;
+  margin-top: -40px;
+  padding: 30px 40px 40px;
+  border-radius: 2px;
+  background-color: white;
+}
+#login > form > h1, #signup > form > h1 {
+  margin: 0 0 20px 0;
+  font-weight: bold;
+}
+#login > form > p, #signup > form > p {
+  margin: 0;
+}
+#login > form > p > label, #signup > form > p > label {
+  display: block;
+  position: relative;
+  font-size: 12px;
+  font-weight: 400;
+  margin-bottom: 2px;
+  color: #333;
+}
+#login > form > p > label::after, #signup > form > p > label::after {
+  bottom: 0;
+  color: white;
+  content: ":";
+  position: absolute;
+  transform: translate(-100%, 0);
+}
+#login > form > p > input, #signup > form > p > input {
+  padding: 11px 0 10px 10px;
+  min-width: 250px;
+  outline: 0;
+  margin: 0 0 10px 0;
+  font-size: 13px;
+  color: #333;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+}
+#login > form > ul.errorlist, #signup > form > ul.errorlist {
+  color: red;
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+#login > form > a, #signup > form > a {
+  margin-top: 2px;
+  color: #666;
+  font-size: 12px;
+}
+#login .btn-login, #login .btn-signup, #signup .btn-login, #signup .btn-signup {
+  width: 100%;
+  border: none;
+  color: white;
+  background-color: #0095f6;
+  margin-top: 10px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+
 body {
   font-family: "Poppins", sans-serif;
   overflow-x: hidden;
 }
+
+.card {
+  width: 300px; /* 원하는 폭으로 조정 */
+}
+
+@media (max-width: 768px) { /* 중간 사이즈 화면 이하에서 */
+  .card {
+      width: 250px; /* 더 작은 폭으로 조정 */
+  }
+}
+
 
 .rounded-image {
   border-radius: 20px 20px 0 0; /* 위쪽 둥근 부분만 남기고 나머지 모서리는 직각으로 설정합니다. */
@@ -304,7 +386,8 @@ a:focus {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin: 0;
+  margin: 50;
+  
 }
 
 .navbar-brand span {
