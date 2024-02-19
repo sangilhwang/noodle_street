@@ -116,14 +116,18 @@
                                 <p>일요일 {{ restaurant.sun_last_order }}</p>
                             {% endif %}       
 
+
                             <!-- 리뷰 표시 영역 -->
                             <h5>리뷰 작성</h5>
-                            <form method="POST">
+                            <form action="{% url 'single_pages:review_add' restaurant.id %}" method="POST">
                                 {% csrf_token %}
+                                <input type="hidden" name="restraunt_pk" value="{{ restaurant.id }}">
+                                {{ reviewform.comment }}
+                                <button type="submit">작성</button>
                             </form>
-                                
+
                             <h5>리뷰</h5>
-                            {% for review in reviews %}
+                            {% for review in reviews %}                              
                                 <p>{{ review.user_pk.username }}</p>
                                 <p>{{ review.comment }}</p>
                             {% endfor %}

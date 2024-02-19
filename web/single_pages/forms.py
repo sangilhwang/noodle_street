@@ -6,7 +6,6 @@ class ReviewForm(forms.ModelForm):
         model = RestrauntReview
         fields = [
             "restraunt_pk",
-            "user_pk",
             "comment",            
         ]
         widgets = {"comment": forms.Textarea(attrs={"placeholder": "리뷰 작성..."})}
