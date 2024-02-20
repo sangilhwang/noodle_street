@@ -16,14 +16,31 @@ class LoginForm(forms.Form):
 
 # 회원가입 기능을 위한 form
 class SignupForm(forms.Form):
-    username = forms.CharField()
-    password1 = forms.CharField(widget=forms.PasswordInput)
-    password2 = forms.CharField(widget=forms.PasswordInput)
-    email = forms.EmailField()
-    birthday = forms.DateField()
+    username = forms.CharField(
+        widget=forms.TextInput(attrs = {"placeholder" : "사용자명 (3자리 이상)"}),
+    )
+
+    password1 = forms.CharField(
+        widget=forms.PasswordInput(attrs = {"placeholder" : "비밀번호 (4자리 이상)"}),
+    )
+
+    password2 = forms.CharField(
+        widget=forms.PasswordInput(attrs = {"placeholder" : "비밀번호 (4자리 이상)"})
+    )
+
+    email = forms.EmailField(
+        widget=forms.TextInput(attrs = {"placeholder" : "noodlestreet@email.com"})
+    )
+    birthday = forms.DateField(
+        widget=forms.DateInput(attrs={'type': 'date'})
+    )
     profile_image = forms.ImageField()
-    first_name = forms.CharField()
-    last_name = forms.CharField()
+    first_name = forms.CharField(
+        widget=forms.TextInput(attrs = {"placeholder" : "이름"})
+    )
+    last_name = forms.CharField(
+        widget=forms.TextInput(attrs = {"placeholder" : "성"})
+    )
 
     def clean_username(self):
         username = self.cleaned_data["username"]
