@@ -1,14 +1,100 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="ko">
+
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="{% static 'css/signupstyle.css' %}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .field {
+                margin-bottom: 15px;
+            }
+
+            input[type="text"] {
+                width: calc(100% - 5px);
+                padding-top: 5px;
+                padding-bottom: 5px;
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+            
+            input[type="password"] {
+                width: calc(100% - 5px);
+                padding-top: 5px;
+                padding-bottom: 5px;
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+            input[type="email"] {
+                width: calc(100% - 5px);
+                padding-top: 5px;
+                padding-bottom: 5px;
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+
+            input[type="date"] {
+                width: calc(100% - 5px);
+                padding-top: 5px;
+                padding-bottom: 5px;
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+
+            .hidden-text {
+                visibility: hidden;
+            }
+
+        </style>
+    </head>
+
     <body>
-        <div id="signup">
-            <form method="POST", enctype="multipart/form-data">
-                <h3><a href="/main/">메인으로 돌아가기</a></h3>
-                <h1>면리단길 - 회원가입</h1>
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit">회원가입</button>
-            </form>
+        <div class="wrapper">
+            <div class="title-text">
+                <div class="title login">
+                    면리단길
+                </div>
+                <div>
+                    <span class="hidden-text">__________</span>
+                </div>
+            </div>    
+            <div class="form-container">
+                <form class="form-signin" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <span class="hidden-text">__________</span>
+                    <div class="field btn">
+                        <div class="btn-layer"></div>
+                            <input type="submit" value="Submit">
+                        <div class="btn-layer"></div>
+                    </div>
+                    <div class="signup-link">
+                        <a href="{% url 'main:main_page' %}">메인 페이지</a>로 돌아가기
+                    </div>
+                </form>
+            </div>
         </div>
+
+        <script>
+            const loginText = document.querySelector(".title-text .login");
+            const loginForm = document.querySelector("form.login");
+            const loginBtn = document.querySelector("label.login");
+            const signupBtn = document.querySelector("label.signup");
+            const signupLink = document.querySelector("form .signup-link a");
+            signupBtn.onclick = (()=>{
+            loginForm.style.marginLeft = "-50%";
+            loginText.style.marginLeft = "-50%";
+            });
+            loginBtn.onclick = (()=>{
+            loginForm.style.marginLeft = "0%";
+            loginText.style.marginLeft = "0%";
+            });
+            signupLink.onclick = (()=>{
+            signupBtn.click();
+            return false;
+            });
+        </script>
     </body>
 </html>

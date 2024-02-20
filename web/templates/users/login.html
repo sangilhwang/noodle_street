@@ -1,12 +1,84 @@
+{% load static %}
+
 <html lang="ko">
-    <div class="container">
-        <a href="{% url 'main:main_page' %}"> 메인으로 돌아가기 </a>
-        <form class="form-signin" method="POST">
-            <h2 class="form-signin-heading">면리단길 - 로그인</h2>
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button class="btn btn-lg btn-primary btn-block btn-login" type="submit">로그인</button>
-        </form>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'css/signupstyle.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .field {
+            margin-bottom: 15px;
+        }
+        input[type="text"] {
+            width: calc(100% - 5px);
+            padding-top: 5px; /* 위쪽 패딩을 5px로 조정 */
+            padding-bottom: 5px; /* 아래쪽 패딩을 5px로 조정 */
+            padding-left: 10px; /* 좌측 패딩은 원래대로 10px 유지 */
+            padding-right: 10px; /* 우측 패딩은 원래대로 10px 유지 */
+        }
+        
+        input[type="password"] {
+            width: calc(100% - 5px);
+            padding-top: 5px; /* 위쪽 패딩을 5px로 조정 */
+            padding-bottom: 5px; /* 아래쪽 패딩을 5px로 조정 */
+            padding-left: 10px; /* 좌측 패딩은 원래대로 10px 유지 */
+            padding-right: 10px; /* 우측 패딩은 원래대로 10px 유지 */
+        }
+
+        .hidden-text {
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="title-text">
+            <div class="title login">
+                면리단길
+             </div>
+             <div>
+                <span class="hidden-text">__________</span>
+            </div>
+        </div>    
+        <div class="form-container">
+            <form class="form-signin" method="POST">
+                {% csrf_token %}
+                <div class="field">
+                    <input type="text" name="username" placeholder="Username" required>
+                </div>
+                <div class="field">
+                    <input type="password" name="password" placeholder="password" required>
+                </div>
+                <div class="field btn">
+                    <div class="btn-layer"></div>
+                        <input type="submit" value="Login">
+                    <div class="btn-layer"></div>
+                </div>
+                <div class="signup-link">
+                    댓글이 달고 싶으세요? <a href="{% url 'users:signup' %}">회원가입</a>
+                </div>
+            </form>
+        </div>
     </div>
+
+    <script>
+        const loginText = document.querySelector(".title-text .login");
+        const loginForm = document.querySelector("form.login");
+        const loginBtn = document.querySelector("label.login");
+        const signupBtn = document.querySelector("label.signup");
+        const signupLink = document.querySelector("form .signup-link a");
+        signupBtn.onclick = (()=>{
+          loginForm.style.marginLeft = "-50%";
+          loginText.style.marginLeft = "-50%";
+        });
+        loginBtn.onclick = (()=>{
+          loginForm.style.marginLeft = "0%";
+          loginText.style.marginLeft = "0%";
+        });
+        signupLink.onclick = (()=>{
+          signupBtn.click();
+          return false;
+        });
+     </script>
 </body>
 </html>
