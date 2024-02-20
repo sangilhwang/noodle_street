@@ -1,6 +1,17 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block base_content %}
+<style>
+  .carousel-item .box {
+    width: 300px; /* 원하는 너비로 조정하세요 */
+    margin: 0 auto; /* 가운데 정렬 */
+}
+
+.carousel-item .box img {
+    width: 100%; /* 이미지를 부모 요소에 맞게 조정 */
+    height: auto; /* 비율 유지 */
+}
+</style>
     <!-- slider section -->
     <section class="slider_section position-relative">
       <div id="customCarousel1" class="carousel slide" data-ride="carousel">
@@ -14,19 +25,24 @@
             <div class="box">
               <div class="baby_detail">
                 <div class="baby_text">
-                  <h2>
-                    <img src="{% static 'images/라멘.jpg' %}" width="100" height="40" class="img-fluid"><small>일본식 라멘?</small>
-                  </h2>
+                  <div class="care_text">
+                  <!-- <h2> -->
+                    <img src="{% static 'images/라멘.jpg' %}" width="100" height="40" class="img-fluid">
+                    <img src="{% static 'images/짜장면.jpg' %}" width="100" height="40" class="img-fluid">
+                  <!-- </h2> -->
+                <div>
+                    
+                  </div>
                 </div>
               </div>
               <div class="care_detail">
                 <!-- <a href="">
                   Noodle Street
                 </a> -->
-                <div class="care_text">
-                  <h2>
-                    <img src="{% static 'images/짜장면.jpg' %}" width="100" height="40" class="img-fluid"><small>오늘은 중식?</small>
-                  </h2>
+                <!-- <div class="care_text"> -->
+                  <!-- <h2>
+                    <img src="{% static 'images/짜장면.jpg' %}" width="100" height="40" class="img-fluid">
+                  </h2> -->
                 </div>
               </div>
             </div>
@@ -36,6 +52,7 @@
               <div class="baby_detail">
                 <div class="baby_text">
                   <h2>
+                    <img src="{% static 'images/냉면.jpg' %}" width="100" height="75" ><small>시원한 냉면?</small>
                     <img src="{% static 'images/우동.png' %}" width="100" height="75" ><small>뜨끈한 우동?</small>
                   </h2>
                 </div>
@@ -43,7 +60,7 @@
               <div class="care_detail">
                 <div class="care_text">
                   <h2>
-                    <img src="{% static 'images/냉면.jpg' %}" width="100" height="75" ><small>시원한 냉면?</small>
+                    
                   </h2>
                 </div>
               </div>

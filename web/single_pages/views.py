@@ -63,6 +63,7 @@ def review_delete(request, restaurant_id, review_id):
     # }
     # return render(request, 'single_pages/restaurant_detail.html', context)
 
+# 좋아요 구현
 def restaurant_like(request, restaurant_id):
     restaurant = Restraunt.objects.get(id=restaurant_id)
     user = request.user # request를 한 유저

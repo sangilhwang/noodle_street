@@ -62,9 +62,12 @@
                     <div class="overlay-content">
                     <div>
                         <!-- <a href=""><i class="fa-solid fa-filter"> 필터 및 정렬</i></a> -->
-                        <a href="{% url 'users:login' %}">로그인</a>
-                        <a href="{% url 'users:logout' %}">로그아웃</a>
-                        <a href="{% url 'users:signup' %}">회원가입</a>
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'users:logout' %}">로그아웃</a>
+                        {% else %}
+                            <a href="{% url 'users:login' %}">로그인</a>
+                            <a href="{% url 'users:signup' %}">회원가입</a>
+                        {% endif %}
                     </div>
                     </div>
                 </div>
