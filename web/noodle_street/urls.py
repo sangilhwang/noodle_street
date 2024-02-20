@@ -21,7 +21,7 @@ from noodle_street import views
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("users/", include("users.urls")),
-    path("", views.main, name="main"),
+    path("", views.index),
     path("main/", include("main.urls")),
     path("single_pages/", include("single_pages.urls")),
 ]
