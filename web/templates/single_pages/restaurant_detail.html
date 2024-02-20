@@ -40,12 +40,16 @@
                 </div>
                 <div>
                     <p class="card-text">주소: {{ restaurant.address }}</p>
-                <!-- 전화번호, 평점, 평가한사람수 보여주기. 없으면 보여주지않음 -->
+                    <!-- 전화번호, 평점, 평가한사람수 보여주기. 없으면 보여주지않음 -->
                     {% if restaurant.phone_no %}
                         <p class="card-text">전화번호: {{ restaurant.phone_no }}</p>
                     {% endif %}
                     {% if restaurant.rating %}
                         <p class="card-text">평점: {{ restaurant.rating }} ({{ restaurant.rating_count }}명이 평가)</p>
+                    {% endif %}
+                    <!-- 주차 가능한지 알려주기 -->
+                    {% if restaurant.parking == True %}
+                    <p> 주차가능 </p>
                     {% endif %}
                     <!-- 영업시간이 있다면 보여주기, 휴무일이면 휴무일 출력 -->
                     {% if restaurant.mon_start %}
@@ -158,7 +162,8 @@
                             {% endif %}
                         {% endfor %}
                     {% endif %}
-
+                    <hr>
+                    <!-- 리뷰 작성 구현 -->
                     <h5>리뷰 작성</h5>
                     <form action="{% url 'single_pages:review_add' restaurant.id %}" method="POST">
                         {% csrf_token %}
@@ -166,17 +171,21 @@
                         {{ reviewform.comment }}
                         <button type="submit">작성</button>
                     </form>
-
-                    <h5>리뷰</h5>
+                    {% if reviews %}
+                    <h5>리뷰 목록</h5>
+                    <hr>
+                    {% endif %}
                     {% for review in reviews %}
                         {% if user == review.user_pk %}
                             <form method="POST" action="{% url 'single_pages:review_delete' restaurant.id review.id %}">
                                 {% csrf_token %}
-                                <button type="submit">삭제</button>
+                                {% endif %}
+                                <div>
+                                <p>
+                                    {{ review.user_pk.username }}: {{ review.comment }}<button type="submit" style="float: right;">삭제</button></p>
+                                </div>
                             </form>
-                        {% endif %}
-                        <p>{{ review.user_pk.username }}</p>
-                        <p>{{ review.comment }}</p>
+                        
                     {% endfor %}
                 </div>
             </div>
