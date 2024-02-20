@@ -435,6 +435,12 @@ a:focus {
   margin-right: 5px;
 }
 
+.slider_section {
+  background-image: url('https://wallpapercave.com/wp/wp2393889.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
 /*end header section*/
 .slider_section {
   background-image: url();
@@ -443,6 +449,9 @@ a:focus {
       -ms-flex: 1;
           flex: 1;
   color: #ffffff;
+  background-image: url('https://wallpapercave.com/wp/wp2393889.jpg');
+  background-size: cover;
+  background-position: center;
 }
 
 .slider_section #customCarousel1,
@@ -500,7 +509,7 @@ a:focus {
 
 .slider_section .box .baby_detail .baby_text {
   padding: 25px 35px;
-  background-color: rgba(37, 37, 37, 0.9);
+  background-color: rgb(255, 255, 255, 219);
   margin-bottom: 15px;
 }
 
@@ -1306,11 +1315,13 @@ a:focus {
   background-color: #fdfdfe;
   text-align: center;
   color: #000000;
+  padding-top: 3px; /* 상단 padding을 줄입니다. */
+  padding-bottom: 3px; /* 하단 padding을 줄입니다. */
 }
 
 .footer_section p {
   margin: 0;
-  padding: 20px 0;
+  padding: 3px 0;
   color: #82c419;
 }
 

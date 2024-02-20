@@ -11,89 +11,104 @@
     width: 100%; /* 이미지를 부모 요소에 맞게 조정 */
     height: auto; /* 비율 유지 */
 }
+.background_section {
+  background-image: url('https://wallpapercave.com/wp/wp2393889.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
 </style>
-    <!-- slider section -->
-    <section class="slider_section position-relative">
-      <div id="customCarousel1" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li data-target="#customCarousel1" data-slide-to="0" class="active"></li>
-          <li data-target="#customCarousel1" data-slide-to="1"></li>
-          <li data-target="#customCarousel1" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="box">
-              <div class="baby_detail">
-                <div class="baby_text">
-                  <div class="care_text">
-                  <!-- <h2> -->
-                    <img src="{% static 'images/라멘.jpg' %}" width="100" height="40" class="img-fluid">
-                    <img src="{% static 'images/짜장면.jpg' %}" width="100" height="40" class="img-fluid">
-                  <!-- </h2> -->
-                <div>
-                    
-                  </div>
-                </div>
-              </div>
-              <div class="care_detail">
-                <!-- <a href="">
-                  Noodle Street
-                </a> -->
-                <!-- <div class="care_text"> -->
-                  <!-- <h2>
-                    <img src="{% static 'images/짜장면.jpg' %}" width="100" height="40" class="img-fluid">
-                  </h2> -->
-                </div>
-              </div>
-            </div>
-          </div>        
-          <div class="carousel-item">
-            <div class="box">
-              <div class="baby_detail">
-                <div class="baby_text">
-                  <h2>
-                    <img src="{% static 'images/냉면.jpg' %}" width="100" height="75" ><small>시원한 냉면?</small>
-                    <img src="{% static 'images/우동.png' %}" width="100" height="75" ><small>뜨끈한 우동?</small>
-                  </h2>
-                </div>
-              </div>
-              <div class="care_detail">
-                <div class="care_text">
-                  <h2>
-                    
-                  </h2>
-                </div>
-              </div>
+    <!-- slider section
+<section class="slider_section position-relative">
+  <div id="customCarousel1" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#customCarousel1" data-slide-to="0" class="active"></li>
+      <li data-target="#customCarousel1" data-slide-to="1"></li>
+      <li data-target="#customCarousel1" data-slide-to="2"></li>
+      <li data-target="#customCarousel1" data-slide-to="3"></li>
+      <li data-target="#customCarousel1" data-slide-to="4"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="box">
+          <div class="baby_detail">
+            <div class="baby_text">
+              <img src="{% static 'images/라멘.jpg' %}" width="100" height="40">
+              <small>일본식 라멘</small>
             </div>
           </div>
-          <div class="carousel-item">
-            <div class="box">
-              <div class="baby_detail">
-                <div class="baby_text">
-                  <h2>
-                    <img src="{% static 'images/칼국수.jpeg' %}" width="120" height="40" class="img-fluid"><small>담백한 칼국수?</small>
-                  </h2>
-                </div>
-              </div>
-              <div class="care_detail">
-                <div class="care_text">
-                  <h2>
-                    <img src="{% static 'images/잔치국수.jpg' %}" width="100" height="40" class="img-fluid"><small>국수 한 그릇?</small>
-                  </h2>
-                </div>
-              </div>
+        </div>
+      </div>        
+      <div class="carousel-item">
+        <div class="box">
+          <div class="baby_detail">
+            <div class="baby_text">
+              <img src="{% static 'images/짜장면.jpg' %}" width="100" height="40">
+              <small>오늘은 중식</small>
             </div>
           </div>
         </div>
       </div>
-    </section>
-    <!-- end slider section -->
-    <!-- 지도부분 -->
+      <div class="carousel-item">
+        <div class="box">
+          <div class="baby_detail">
+            <div class="baby_text">
+              <img src="{% static 'images/냉면.jpg' %}" width="100" height="40">
+              <small>시원한 냉면</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="box">
+          <div class="baby_detail">
+            <div class="baby_text">
+              <img src="{% static 'images/우동.png' %}" width="100" height="40">
+              <small>뜨끈한 우동</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="box">
+          <div class="baby_detail">
+            <div class="baby_text">
+              <img src="{% static 'images/칼국수.jpeg' %}" width="100" height="40">
+              <small>담백한 칼국수</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="box">
+          <div class="baby_detail">
+            <div class="baby_text">
+              <img src="{% static 'images/잔치국수.jpg' %}" width="100" height="40">
+              <small>국수 한 그릇</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+<!-- end slider section -->
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-2"></div>
+    <div class="col-md-6">
+      <h3>찾고싶은 자치구를 클릭하세요 <i class="fa-regular fa-face-smile" style="color: #FFD43B;"></i></h3>
+    </div>
+  </div>
+</div>
+
+      <!-- 지도부분 -->
+  <div class="background_section">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-md-2"></div>
         <div class="col-md-6">
-            <h3>찾고싶은 자치구를 클릭하세요 <i class="fa-regular fa-face-smile" style="color: #FFD43B;"></i></h3>
+            <!-- <h3>찾고싶은 자치구를 클릭하세요 <i class="fa-regular fa-face-smile" style="color: #FFD43B;"></i></h3> -->
             <img src="{% static 'images/그림테스트1.png' %}" width="429" height="398" usemap="#MapSeoul" alt="서울지도" class="img-fluid"> 
             <map name="MapSeoul" id="MapSeoul">
               <area shape="poly" coords="237,233,254,227,268,236,278,242,280,259,296,267,310,276,313,286,319,301,307,306,300,308,294,293,284,290,265,296,266,287,251,273,250,264" href="/main/gu/강남구/" class="Seoul01" alt="강남구" title="강남구">
@@ -124,11 +139,12 @@
             </map>
         </div>
         <!-- footer section -->
-        <footer class="footer_section container-fluid">
-          <p>
-            <span id="displayYear"></span> All Rights Reserved. Design by MINUS123
-          </p>
-        </footer>
       </div>
     </div>
+  </div>
+  <footer class="footer_section container-fluid">
+    <p>
+      <span id="displayYear"></span> All Rights Reserved. Design by MINUS123
+    </p>
+  </footer>
 {% endblock %}

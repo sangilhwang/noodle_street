@@ -39,9 +39,10 @@ def restaurant_list(request, gu):
         restaurant_keyword = Restraunt.objects.filter(name__contains = keyword)
         if parking_option == 'on':
             # 주차 가능 여부 체크박스가 선택된 경우
-            restaurant_keyword = restaurant_keyword.filter(parking=True)
+            restaurant_keyword = restaurant_keyword.filter(parking=True, address_gu=gu)
         context = {
             'restaurant_keyword': restaurant_keyword,
+            'parking_option' : parking_option,
             'keyword': keyword,
             'gu':gu,
         }
@@ -49,15 +50,16 @@ def restaurant_list(request, gu):
     
     elif parking_option == 'on':
         # 주차 가능 여부 체크박스만 선택한 경우
-        restaurants = Restraunt.objects.filter(parking=True)
+        restaurants = Restraunt.objects.filter(parking=True, address_gu=gu)
         context = {
             'restaurants': restaurants,
+            'parking_option' : parking_option,
             'gu':gu,
         }
         return render(request, 'main/restaurant_list.html', context)
     else:
         # 아무런 필터가 없는 경우
-        restaurants = Restraunt.objects.all()
+        restaurants = Restraunt.objects.filter(address_gu=gu)
         context = {
             'restaurants': restaurants,
             'gu':gu,
